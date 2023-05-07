@@ -1,0 +1,21 @@
+{
+  "name": "angular-task-app",
+  "version": "1.1.0",
+  "description": "server side of the angular task",
+  "main": "server.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "author": "Eliran",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongoose": "^6.10.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

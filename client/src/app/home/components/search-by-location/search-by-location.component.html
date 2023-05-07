@@ -1,0 +1,50 @@
+<!-- Dropdown button -->
+<div class="dropdown">
+  <button class="btn btn-primary text-light dropdown-toggle" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    type="button" aria-expanded="true">Search
+    by location</button>
+</div>
+
+<!-- Show Locations Modal  -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Search By Location</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngIf="selectedLocation !== undefined">
+        <div class="filter-dropdown">
+          <label for="locations">Select Location</label>
+          <select id="locations" [(ngModel)]="selectedLocationCarNumber" (ngModelChange)="locChanged()"
+            class="form-select" aria-label="Default select example">
+            <option *ngFor="let loc of locations" [value]="loc.carNumber">{{loc.locationLatLng}}</option>
+          </select>
+        </div>
+        <div class="filtered-data">
+          <div class="details">
+            <h5>{{ selectedLocation.locationLatLng }}</h5>
+            <p>Date Of Visit: {{ selectedLocation.dateTime }}</p>
+            <p>Location Image: <img class="locationImg"
+                [src]="'../../assets/img/' + selectedLocation.locationLatLng + '.png'" alt="Location Image"></p>
+            <p>Car Details</p>
+            <ul>
+              <li>
+                <p><strong>Car Owner:</strong> {{ locationCarOwner?.fullName }}</p>
+                <p><strong>Car number:</strong> {{ locationCar?.carNumber }}</p>
+                <p><strong>Car branch:</strong> {{ locationCar?.carBranch }}</p>
+                <p class="d-flex align-items-center"><strong>Car color:</strong>
+                  <span class="carcolor" [ngStyle]="{'background': locationCar?.carColor}"></span>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

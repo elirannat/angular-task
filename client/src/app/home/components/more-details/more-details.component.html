@@ -1,0 +1,37 @@
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="selectedUser !== undefined">
+                <h5>{{ selectedUser.fullName }}</h5>
+                <p>Address: {{ selectedUser.address }}</p>
+                <p>Phone: {{ selectedUser.phoneNumber }}</p>
+                <p>Image: <img [src]="decodedImg" alt="User Image" /></p>
+                <p>Birthday: {{ selectedUser.birthday }}</p>
+                <p>Car Details</p>
+                <ul>
+                    <li *ngFor="let car of newCars">
+                        <p><strong>Car number:</strong> {{ car.carNumber }}</p>
+                        <p><strong>Car branch:</strong> {{ car.carBranch }}</p>
+                        <p class="d-flex align-items-center"><strong>Car color:</strong>
+                            <span class="carcolor" [ngStyle]="{'background': car.carColor}"></span>
+                        </p>
+                    </li>
+                </ul>
+                <p>Visited locations:</p>
+                <ul>
+                    <li *ngFor="let location of newlocations">{{ location.locationLatLng }}, {{ location.dateTime }},
+                        License
+                        Plate:
+                        {{ location.carNumber }}</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

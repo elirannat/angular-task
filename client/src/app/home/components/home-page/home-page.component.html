@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  
+  <!-- This component is responsible for Search bar and can be used to filter data by Name, Phone and DOB -->
+  <search-bar [array]="usersRowData" (onArrayFiltered)="onSearch($event)">
+  </search-bar>
+
+  <!-- This component is responsible for Search by location -->
+  <search-by-location [LocData]="locations" [cars]="cars" [users]="users"></search-by-location>
+
+  <!-- This component is responsible for the main Table  -->
+  <app-table [locations]="locations" [cars]="cars" [usersData]="users"></app-table>
+
+</div>

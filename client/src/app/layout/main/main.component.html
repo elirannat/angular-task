@@ -1,0 +1,8 @@
+<main class="d-flex flex-row p-0 min-hieght-84">
+  <div *ngIf="user" class="col-1 col-lg-2 bg-dark m-0 p-0">
+  </div>
+
+  <div [ngClass]="user ? 'col-11 col-lg-10 m-0 p-2' : 'col-12 m-0 p-0'">
+    <router-outlet></router-outlet>
+  </div>
+</main>

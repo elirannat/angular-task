@@ -1,0 +1,29 @@
+<table>
+    <thead>
+        <tr>
+            <th class="d-none d-md-table-cell">{{ "Full Name" | titlecase }} <span (click)="orderBy('fullName')"><i
+                        class="fa-solid fa-sort"></i></span>
+            </th>
+            <th class="d-none d-md-table-cell">{{ "Phone" | titlecase }} <span (click)="orderBy('phoneNumber')"><i
+                        class="fa-solid fa-sort"></i></span></th>
+            <th class="d-none d-md-table-cell">{{ "Birthday" | titlecase }} <span (click)="orderBy('birthday')"><i
+                        class="fa-solid fa-sort"></i></span></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users | orderBy:sortProp:sortOrder | paginate: { itemsPerPage: 5, currentPage: currentPage
+        }; let i = index;">
+            <td>{{ user.fullName }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.birthday }}</td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailsModal"
+                (click)="showDetails(user.userIndex)">Details</button>
+        </tr>
+    </tbody>
+</table>
+<pagination-controls class="text-center" (pageChange)="currentPage = $event"></pagination-controls>
+
+
+<app-more-details [newCars]="newCars" [newlocations]="newlocations" [decodedImg]="decodedImg"
+    [selectedUser]="selectedUser"></app-more-details>
